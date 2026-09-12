@@ -112,7 +112,8 @@ if [ -d "package/downloads/luci-theme-argon" ]; then
     echo "luci-theme-argon 已存在，跳过"
 else
     echo "正在克隆 luci-theme-argon..."
-    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+    git clone --depth=1 -b 18.06 https://github.com/hza81007155/luci-theme-argon package/luci-theme-argon
+    git clone --depth=1 -b 18.06 https://github.com/hza81007155/luci-app-argon-config package/luci-app-argon-config
 fi
 
 # luci-app-adguardhome
@@ -140,8 +141,8 @@ echo "========================================"
 echo "修改本地文件"
 echo "========================================"
 echo "修改默认IP"
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/luci/bin/config_generate
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.12/g' package/base-files/luci/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.12/g' package/base-files/files/bin/config_generate
 
 echo "设置默认主题为 argon"
 # 使用 gi 标志，一个命令同时搞定大小写，且描述和依赖包名都换掉
