@@ -112,8 +112,7 @@ if [ -d "package/downloads/luci-theme-argon" ]; then
     echo "luci-theme-argon 已存在，跳过"
 else
     echo "正在克隆 luci-theme-argon..."
-    git clone --depth=1 -b 18.06 https://github.com/hza81007155/luci-theme-argon package/luci-theme-argon
-    git clone --depth=1 -b 18.06 https://github.com/hza81007155/luci-app-argon-config package/luci-app-argon-config
+    git clone -b 18.06 https://github.com/hza81007155/luci-theme-argon.git package/downloads/luci-theme-argon
 fi
 
 # luci-app-adguardhome
@@ -162,21 +161,6 @@ echo "修改 x86 内核版本"
 KERNEL=$1
 sed -i "s/KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=${KERNEL}/" target/linux/x86/Makefile
 echo "修改完成"
-
-echo "========================================"
-echo "克隆仓库到 studio 目录"
-echo "========================================"
-echo "克隆仓库到 studio 目录"
-rm -rf studio
-git clone https://github.com/mcusee/studio.git studio
-echo "开始替换 PNG 文件..."
-cp -f studio/icons/*.png feeds/luci/modules/luci-base/htdocs/luci-static/resources/icons/
-echo "PNG 替换完成"
-
-echo "下载 bg1.jpg..."
-wget -O package/downloads/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg \
-https://raw.githubusercontent.com/mcusee/studio/main/icons/bg1.jpg
-echo "替换完成"
 
 wget -O .config https://raw.githubusercontent.com/mcusee/OpenWrt-build/main/.config
 
