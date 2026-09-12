@@ -123,6 +123,13 @@ else
     git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 fi
 
+# istoreos
+if 
+    git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
+    git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
+    git clone --depth=1 -b main https://github.com/linkease/istore package/istore
+fi
+
 echo "========================================"
 echo "更新 luci-app-passwall"
 echo "========================================"
