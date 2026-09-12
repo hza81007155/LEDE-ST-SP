@@ -124,11 +124,9 @@ else
 fi
 
 # istoreos
-if 
-    git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
-    git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
-    git clone --depth=1 -b main https://github.com/linkease/istore package/istore
-fi
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci package/nas-packages-luci
+git clone --depth=1 -b master https://github.com/linkease/nas-packages package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/istore package/istore
 
 echo "========================================"
 echo "更新 luci-app-passwall"
