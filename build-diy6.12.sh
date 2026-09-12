@@ -151,9 +151,12 @@ sed -i "s/bootstrap/argon/gi" feeds/luci/collections/luci-nginx/Makefile
 sed -i "s/bootstrap/argon/gi" feeds/luci/collections/luci-ssl-nginx/Makefile
 
 echo "修改固件品牌名称"
-sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/base-files/luci/bin/config_generate
-sed -i 's/LEDE/OpenWrt/g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
+#sed -i 's/LEDE/OpenWrt/g' package/base-files/luci/bin/config_generate
+#sed -i 's/LEDE/OpenWrt/g' package/lean/default-settings/files/zzz-default-settings
+date_version=$(date +"%y.%m.%d")
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+sed -i "s/${orig_version}/R${date_version} by hza800755 /g" package/lean/default-settings/files/zzz-default-settings
 
 echo "修改 x86 内核版本"
 KERNEL=$1
